@@ -34,8 +34,12 @@ public class VytvorimeDatabazi {
     //STEP 4: Execute a query 
     System.out.println("Creating statement..."); 
     stmt = conn.createStatement();
+    if(sql.startsWith("S")){
     ResultSet rs = stmt.executeQuery(sql);
-    return rs;
+    return rs;}
+    else{
+    stmt.executeUpdate(sql);
+    return null;}
     }
     }
 
