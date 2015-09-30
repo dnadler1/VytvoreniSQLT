@@ -16,21 +16,15 @@ import java.sql.Statement;
  * @author david
  */
 public class VytvorimeDatabazi {
-    // JDBC driver name and database URL 
-    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    private static final String DB_URL = "jdbc:derby://localhost:1527/ONLINEOBCHOD";
-    // Database credentials 
-    private static final String USER = "dnadler";
-    private static final String PASS = "nadlerka"; 
     private static Connection conn = null;
     private static Statement stmt = null;
-    public static ResultSet vratHodnotu(String sql) throws SQLException,Exception
+    public static ResultSet vratHodnotu(String sql, String user, String password, String driver, String url) throws SQLException,Exception
     {
     //STEP 2: Register JDBC driver 
-    Class.forName(JDBC_DRIVER);
+    Class.forName(driver);
     //STEP 3: Open a connection 
     System.out.println("Connecting to database...");
-    conn = DriverManager.getConnection(DB_URL, USER, PASS);
+    conn = DriverManager.getConnection(url, user, password);
     //STEP 4: Execute a query 
     System.out.println("Creating statement..."); 
     stmt = conn.createStatement();

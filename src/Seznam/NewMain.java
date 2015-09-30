@@ -5,6 +5,7 @@
  */
 package Seznam;
 
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +20,7 @@ public class NewMain {
      */
     public static void main(String[] args) {
         try {
-            System.out.println(Seznam.SeznamZDatabaze.vytvorKolekci("SELECT * FROM "));
+            System.out.println(Seznam.SeznamZDatabaze.vytvorKolekci("INSERT INTO KONTAKTY (JMENO,PRIJMENI,ADRESA,UZIVATEL,PASSWORD) VALUES ('aaa6','aaa6', 'aaa6','aaa6','aaa6' )", "dnadler", "nadlerka","org.apache.derby.jdbc.ClientDriver" , "jdbc:derby://localhost:1527/ONLINEOBCHOD"));
         } catch (Exception ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
         }

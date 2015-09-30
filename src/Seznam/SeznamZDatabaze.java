@@ -8,9 +8,6 @@ package Seznam;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author david
@@ -20,13 +17,17 @@ public class SeznamZDatabaze {
     private static ResultSetMetaData rsmd = null;
     private static Integer cislo = 0;
 
-    public static Object[][] vytvorKolekci(String sql) throws SQLException, Exception {
-        ResultSet rs = VytvorimeDatabazi.vratHodnotu(sql);
+    public static Object[][] vytvorKolekci(String sql, String user, String password, String driver, String url) throws SQLException, Exception {
+        ResultSet rs = VytvorimeDatabazi.vratHodnotu(sql,user,password,driver,url);
+        if(rs==null)
+        {return null;}
         while (rs.next()) {
             cislo++;
         }
         rs.close();
-        ResultSet rs2 = VytvorimeDatabazi.vratHodnotu(sql);
+        ResultSet rs2 = VytvorimeDatabazi.vratHodnotu(sql,user,password,driver,url);
+        if(rs2==null)
+        return null;
         ResultSetMetaData rsmd = rs2.getMetaData();
         Object poles[][] = new Object[cislo][rsmd.getColumnCount()];
         cislo = 0;
